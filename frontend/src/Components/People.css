@@ -1,0 +1,59 @@
+.main{
+    width: 80%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .table{
+    width: 60%;
+    background-color: rgb(199, 226, 219);
+    align-self: center;
+    border-radius: 10px;
+    margin-top: 2%;
+    font-size: large;
+    font-weight: 400;
+    margin-right: 10%;
+  }
+  table button{
+    margin-right: 2px;
+  }
+  .card{
+    width: 60%;
+    background-color: rgb(199, 226, 219);
+    align-self: center;
+    border-radius: 10px;
+    margin-top: 2%;
+    font-size: large;
+    font-weight: 400;
+    margin-right: 10%;
+  }
+  tr:hover{
+    background-color: rgba(199, 214, 211, 0.938);
+    font-size: large;
+    font-weight: 400;
+    color: #1d5a4e;
+    cursor: pointer;
+  }
+  tr.tr-selected:focus{
+    background-color: rgba(199, 214, 211, 0.938);
+    font-size: large;
+    font-weight: 400;
+    color: #1d5a4e;
+  }
+
+  .handleDataBtn{
+    width: 60%;
+    align-self: center;
+    border-radius: 10px;
+    margin-top: 10%;
+    font-size: large;
+    font-weight: 400;
+    margin-right: 10%;
+  }
+  .handleDataBtn button{
+    margin-right: 3px;
+    height: 120%;
+    font-size: large;
+    font-weight: 400;
+  }
