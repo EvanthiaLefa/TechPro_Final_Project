@@ -14,39 +14,43 @@ import java.util.Optional;
 @AllArgsConstructor
 @RestController
 @RequestMapping("people")
+@CrossOrigin(origins = "http://localhost:3000")
 public class PeopleController {
 
-    @Autowired
-    private final ServicePeopleImpl servicePeople;
-    @GetMapping(value = "/find_people" , produces = "application/json")
-    public List<People> findAll()
-    {
-        return servicePeople.findAll();
-    }
-    @PostMapping(value = "/create_people",consumes = "application/json" , produces = "application/json")
-    public ResponseEntity<?> test_controller3(@RequestBody People people) {
-        System.out.println(people);
-        servicePeople.savePeople(people);
-        return ResponseEntity.ok().build();
-    }
-    @GetMapping(value = "/get_people/{id}" , produces = "application/json")
-    public Optional<People> findById(@PathVariable Long id){
-        return servicePeople.findById(id);
-    }
+  @Autowired
+  private final ServicePeopleImpl servicePeople;
 
-    @PutMapping(value = "/update_people", consumes = "application/json")
-    public ResponseEntity<?> updatePeople( @RequestBody People updatedPeople) {
-            servicePeople.updatePeople(updatedPeople);
+  @GetMapping(value = "/find_people", produces = "application/json")
+  public List<People> findAll() {
+    return servicePeople.findAll();
+  }
 
-            return ResponseEntity.ok().build();
-    }
+  @PostMapping(value = "/create_people", consumes = "application/json", produces = "application/json")
+  public ResponseEntity<?> test_controller3(@RequestBody People people) {
+    System.out.println(people);
+    servicePeople.savePeople(people);
+    return ResponseEntity.ok().build();
+  }
 
-    @DeleteMapping(value = "/delete_people/{id}")
-    public ResponseEntity<?> deleteById(@PathVariable Long id) {
-        servicePeople.deleteById(id);
-        return ResponseEntity.ok().build();
-    }
+  @GetMapping(value = "/get_people/{id}", produces = "application/json")
+  public Optional<People> findById(@PathVariable Long id) {
+      System.out.println("id");
+    return servicePeople.findById(id);
+  }
 
+  @PutMapping(value = "/update_people", consumes = "application/json", produces = "application/json")
+  public ResponseEntity<?> updatePeople(@RequestBody People updatedPeople) {
+    System.out.println("test");
+    servicePeople.updatePeople(updatedPeople);
+
+    return ResponseEntity.ok().build();
+  }
+
+  @DeleteMapping(value = "/delete_people/{id}")
+  public ResponseEntity<?> deleteById(@PathVariable Long id) {
+    servicePeople.deleteById(id);
+    return ResponseEntity.ok().build();
+  }
 
 
 }

@@ -13,6 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 @RestController
 @RequestMapping("order")
+@CrossOrigin(origins = "http://localhost:3000")
 public class OrderController {
 
     @Autowired
@@ -23,8 +24,9 @@ public class OrderController {
     {
         return serviceOrder.findAll();
     }
+
     @PostMapping(value = "/create_order",consumes = "application/json" , produces = "application/json")
-    public ResponseEntity<?> test_controller3(@RequestBody Order order) {
+    public ResponseEntity<?> create_order(@RequestBody Order order) {
         System.out.println(order);
         serviceOrder.saveOrder(order);
         return ResponseEntity.ok().build();

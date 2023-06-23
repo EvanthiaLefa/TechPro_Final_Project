@@ -7,6 +7,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @Data
 @NoArgsConstructor
@@ -21,4 +23,7 @@ public class Item {
 
     @Column(name = "name")
     private String name;
+
+    @OneToMany(mappedBy = "itemId", cascade = CascadeType.REMOVE)
+    private List<OrderDetails> orderDetails;
 }

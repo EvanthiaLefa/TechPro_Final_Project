@@ -1,9 +1,7 @@
 package com.techpro.project.controllers;
 
-import com.techpro.project.entity.Order;
 import com.techpro.project.entity.OrderDetails;
 import com.techpro.project.service.ServiceOrderDetailsImpl;
-import com.techpro.project.service.ServiceOrderImpl;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +12,7 @@ import java.util.List;
 @AllArgsConstructor
 @RestController
 @RequestMapping("order_details")
+@CrossOrigin(origins = "http://localhost:3000")
 public class OrderDetailsController {
 
     @Autowired

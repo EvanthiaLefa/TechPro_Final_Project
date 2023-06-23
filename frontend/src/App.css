@@ -19,7 +19,6 @@
   color:#294939;
 }
 .nav{
-  text-decoration: none;
   font-weight: 800;
   
 }
@@ -34,4 +33,7 @@ a.nav-link:hover{
 }
 a.nav-link:focus{
   color: #48cd83;
+}
+a{
+  text-decoration: none;
 }
