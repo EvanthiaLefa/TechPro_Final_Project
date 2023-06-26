@@ -64,7 +64,7 @@
     font-weight: 400;
   }
   button#btn-order{
-    margin-left: 50%;
+    margin-left: 67%;
   
   } 
   .navbar-people {
@@ -76,4 +76,41 @@
     font-size: large;
     font-weight: 400;
     
+  }
+
+  @media (max-width: 2300px){
+    .handleDataBtn{
+      width: 60%;
+    }
+    button#btn-order{
+      margin-left: 60%;
+    } 
+
+  }
+  @media (max-width: 1900px){
+    .handleDataBtn{
+      width: 60%;
+    }
+    button#btn-order{
+      margin-left: 41%;
+    } 
+
+  }
+  @media (max-width: 1300px){
+    .handleDataBtn{
+      width: 60%;
+    }
+    button#btn-order{
+      margin-left: 30%;
+    } 
+
+  }
+  @media (max-width: 1070px){
+    .handleDataBtn{
+      width: 60%;
+    }
+    button#btn-order{
+      margin-left: 10%;
+    } 
+
   }

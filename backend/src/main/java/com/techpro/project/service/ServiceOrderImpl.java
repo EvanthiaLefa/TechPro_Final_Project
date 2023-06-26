@@ -11,16 +11,21 @@ import java.util.List;
 
 @Service
 @Transactional
-public class ServiceOrderImpl implements ServiceOrder{
-    @Autowired
-    private OrderRepository orderRepository;
+public class ServiceOrderImpl implements ServiceOrder {
 
-    public Order saveOrder(Order order) {
-        return orderRepository.save(order);
-    }
+  private final OrderRepository orderRepository;
 
-    public List<Order> findAll() {
-        return orderRepository.findAll();
-    }
+  @Autowired
+  public ServiceOrderImpl(OrderRepository orderRepository) {
+    this.orderRepository = orderRepository;
+  }
+
+  public Order saveOrder(Order order) {
+    return orderRepository.save(order);
+  }
+
+  public List<Order> findAll() {
+    return orderRepository.findAll();
+  }
 
 }

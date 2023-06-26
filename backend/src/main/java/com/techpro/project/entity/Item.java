@@ -2,10 +2,11 @@ package com.techpro.project.entity;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import java.util.List;
 
@@ -16,14 +17,17 @@ import java.util.List;
 @Table(name = "items")
 public class Item {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "item_id")
-    private Long itemId;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "item_id")
+  private Long itemId;
 
-    @Column(name = "name")
-    private String name;
+  @Column(name = "name")
+  private String name;
 
-    @OneToMany(mappedBy = "itemId", cascade = CascadeType.REMOVE)
-    private List<OrderDetails> orderDetails;
+  @OneToMany(mappedBy = "item", cascade = CascadeType.REMOVE)
+  @ToString.Exclude // Exclude orderList from toString()
+  @JsonBackReference//this helps with the deletion of FK * If we don't have this when deleting the child, parent throws FK violation
+  private List<OrderDetails> orderDetails;
+
 }

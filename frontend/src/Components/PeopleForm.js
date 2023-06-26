@@ -1,7 +1,7 @@
 import { useLocation } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 import './PeopleForm.css'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 //me props einai apo mpampa se paidi nested mesa sto component
 //Me query parameters onta den exw relationship ()  useLocation <Link to={selectedPerson ? `/form?personId=${selectedPerson.id}` : `/form`}>  const params = new URLSearchParams(location.search);
@@ -11,6 +11,7 @@ const PeopleForm = () => {
   const location = useLocation();
   const params = new URLSearchParams(location.search);
   const personId = params.get('personId');
+  const navigate = useNavigate();
 
   //trexei meta to prwto render tou component
   useEffect(() => {
@@ -44,15 +45,16 @@ const PeopleForm = () => {
       },
       body: JSON.stringify(data),
     })
-      .then((response) => response.json())
-      .then((responseData) => {
-        // Handle the response data if needed
-        console.log(responseData);
-      })
-      .catch((error) => {
-        // Handle the error if the request fails
-        console.error(error);
-      });
+    .then((responseData) => {
+      // Handle the response data if needed
+      console.log("createPeople response data", responseData);
+      // Navigate to the People component
+      navigate('/');
+    })
+    .catch((error) => {
+      // Handle the error if the request fails
+      console.error(error);
+    });
   };
 
   return (

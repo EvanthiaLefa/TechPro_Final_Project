@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import './PeopleForm.css'
-import { Link } from 'react-router-dom';
+import './PeopleForm.css';
+import { Link, useNavigate } from 'react-router-dom';
 
 const CreatePeopleForm = () => {
   const [person, setPerson] = useState();
+  const navigate = useNavigate();
 
   const handleSubmit = () => {
-    console.log(person)
+    console.log(person);
     // Create an object with the input values
     const data = {
       firstName: person.firstName,
@@ -14,7 +15,7 @@ const CreatePeopleForm = () => {
       email: person.email
     };
 
-    // Make a POST request using fetch 
+    // Make a POST request using fetch
     fetch('http://localhost:8080/people/create_people', {
       method: 'POST',
       headers: {
@@ -22,15 +23,16 @@ const CreatePeopleForm = () => {
       },
       body: JSON.stringify(data),
     })
-      .then((response) => response.json())
-      .then((responseData) => {
-        // Handle the response data if needed
-        console.log(responseData);
-      })
-      .catch((error) => {
-        // Handle the error if the request fails
-        console.error(error);
-      });
+    .then((responseData) => {
+      // Handle the response data if needed
+      console.log("createPeople response data", responseData);
+      // Navigate to the People component
+      navigate('/');
+    })
+    .catch((error) => {
+      // Handle the error if the request fails
+      console.error(error);
+    });
   };
 
   return (
@@ -73,11 +75,9 @@ const CreatePeopleForm = () => {
             onChange={(e) => setPerson({ ...person, email: e.target.value })}
           />
         </div>
-        <Link to={"/"}>
         <button type="button" className="btn btn-dlt btn-success" onClick={handleSubmit}>
           submit
         </button>
-        </Link>
       </div>
     </div>
   );

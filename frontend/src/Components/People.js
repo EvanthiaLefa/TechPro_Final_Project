@@ -1,7 +1,8 @@
 import React, { useEffect, useState, useRef } from 'react';
 import './People.css';
-import PeopleForm from './PeopleForm';
-import { Route, Routes, Link } from 'react-router-dom';
+import {Link } from 'react-router-dom';
+
+// In this component i'm creating order per person (an entry in order table) each item i'm choosing is a new entry in order_details table
 
 const People = () => {
   const [people, setPeople] = useState([]);
@@ -43,33 +44,15 @@ const People = () => {
       method: 'DELETE'
     })
       .then(() => {
-        // Reload the window after successful deletion
-        window.location.reload();
+        //Maybe map would be more efficient
+        const updatedPersons = people.filter(person => person.id !== id);
+        setPeople(updatedPersons);
       })
       .catch((error) => {
         // Handle error if delete request fails
         console.error(error);
       });
   };
-
-  // const handleOrder = ()=>{
-  //   const data = {
-  //     orderDate: new Date(),
-  //     people: {
-  //       id:selectedPerson.id,
-  //       firstName: selectedPerson.firstName,
-  //       lastName: selectedPerson.lastName,
-  //       email: selectedPerson.email
-  //     }
-  //   };
-  //   fetch('http://localhost:8080/order/create_order', {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //     },
-  //     body: JSON.stringify(data),
-  //   })
-  // }
 
   return (
     <div className='main'>
@@ -82,15 +65,6 @@ const People = () => {
           </form>
         </div>
       </nav>
-      {people.length === 0 ? (
-        <div className='handleDataBtn'>
-          <Link to={`/createForm`}>
-            <button type="button" className="btn btn-add btn-success">create</button>
-          </Link>
-          <button type="button" disabled className="btn btn-update btn-success">update</button>
-          <button type="button" disabled className="btn btn-dlt btn-success">delete</button>
-        </div>
-      ) : (
         <div className='handleDataBtn'>
           <Link to={`/createForm`}>
             <button type="button" className="btn btn-add btn-success">create</button>
@@ -99,12 +73,11 @@ const People = () => {
             <button type="button" disabled={!selectedPerson} className="btn btn-update btn-success"> update </button>
           </Link>
           <button type="button" disabled={!selectedPerson} className="btn btn-dlt btn-success" onClick={handleDelete}> delete </button>
-          <Link to={selectedPerson && `/createOrder?personId=${selectedPerson.id}&personfirst=${selectedPerson.firstName}&personlast=${selectedPerson.lastName}`}>
+          <Link to={selectedPerson && `/createOrder?personId=${selectedPerson.id}&personfirst=${selectedPerson.firstName}&personlast=${selectedPerson.lastName}&email=${selectedPerson.email}`}>
           <button type="button" disabled={!selectedPerson} id='btn-order' className="btn btn-success"> place order</button>
           </Link>
         </div>
-      )}
-
+      
       {people.length === 0 ? (
         <div className="card">
           <div className="card-body">
@@ -128,8 +101,7 @@ const People = () => {
                 className={`tr-selected ${selectedPerson === person ? 'active' : ''}`}
                 key={person.id}
                 onClick={() => handleClick(person)}
-                tabIndex="0"
-              >
+                tabIndex="0">
                 <th scope="row">{person.id}</th>
                 <td>{person.firstName}</td>
                 <td>{person.lastName}</td>
