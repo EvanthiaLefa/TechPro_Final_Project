@@ -23,3 +23,10 @@ Also instead of doing the steps 6-9 you can just run the script using the comman
 
 
 
+|People Controller |Item Controller |Order Controller |Order_Details Controller |
+|-------------------|:--------------:|----------------:|-------------------------|
+|findAll() Avg: 31ms|     Row 1      |   Row 1         |                         |                                                                   
+|findById()          |     Row 2      |   Row 2         |                         |
+|   Row 3          |     Row 3      |   Row 3         |                         |
+|   Row 3          |     Row 3      |   Row 3         |                         |
+|   Row 3          |     Row 3      |   Row 3         |                         |
