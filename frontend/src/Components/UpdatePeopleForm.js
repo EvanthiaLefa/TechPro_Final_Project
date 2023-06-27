@@ -3,20 +3,16 @@ import React, { useEffect, useState } from 'react';
 import './PeopleForm.css'
 import { Link, useNavigate } from 'react-router-dom';
 
-//me props einai apo mpampa se paidi nested mesa sto component
-//Me query parameters onta den exw relationship ()  useLocation <Link to={selectedPerson ? `/form?personId=${selectedPerson.id}` : `/form`}>  const params = new URLSearchParams(location.search);
-//hooks in ola auta me use
-const PeopleForm = () => {
+const UpdatePeopleForm = () => {
   const [person, setPerson] = useState();
   const location = useLocation();
   const params = new URLSearchParams(location.search);
   const personId = params.get('personId');
-  const navigate = useNavigate();
 
   //trexei meta to prwto render tou component
   useEffect(() => {
     if (personId) {
-      fetch(`http://localhost:8080/people/get_people/${personId}`)
+      fetch(`http://${window.location.hostname}:8090/people/get_people/${personId}`)
         .then((response) => response.json())
         .then((person) => {
           console.log('Data received:', person);
@@ -38,7 +34,7 @@ const PeopleForm = () => {
     };
 
     // Make a PUT request using fetch 
-    fetch('http://localhost:8080/people/update_people', {
+    fetch(`http://${window.location.hostname}:8090/people/update_people`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -46,13 +42,9 @@ const PeopleForm = () => {
       body: JSON.stringify(data),
     })
     .then((responseData) => {
-      // Handle the response data if needed
-      console.log("createPeople response data", responseData);
-      // Navigate to the People component
-      navigate('/');
+      window.location.reload();
     })
     .catch((error) => {
-      // Handle the error if the request fails
       console.error(error);
     });
   };
@@ -109,4 +101,4 @@ const PeopleForm = () => {
   );
 };
 
-export default PeopleForm;
+export default UpdatePeopleForm;

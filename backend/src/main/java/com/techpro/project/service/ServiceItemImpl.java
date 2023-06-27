@@ -39,7 +39,6 @@ public class ServiceItemImpl implements ServiceItem {
    * @param item The item to be saved.
    * @return The saved Item object.
    */
-
   public Item saveItem(Item item) {
     return itemRepository.save(item);
   }

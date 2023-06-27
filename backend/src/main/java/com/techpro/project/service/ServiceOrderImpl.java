@@ -20,12 +20,31 @@ public class ServiceOrderImpl implements ServiceOrder {
     this.orderRepository = orderRepository;
   }
 
+  /**
+   * Saves an order.
+   * @param order The order to be saved.
+   * @return The saved order object.
+   */
   public Order saveOrder(Order order) {
     return orderRepository.save(order);
   }
 
+  /**
+   * Retrieves a list of all orders.
+   * <p>
+   * It retrieves all orders using the OrderRepository's findAll() method.
+   * @return A List of Order objects representing all the orders.
+   */
   public List<Order> findAll() {
     return orderRepository.findAll();
+  }
+
+  /**
+   * Deletes an order by its ID.
+   * @param id The ID of the order to be deleted.
+   */
+  public void deleteById(Long id) {
+    orderRepository.deleteById(id);
   }
 
 }

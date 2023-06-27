@@ -8,4 +8,5 @@ import java.util.List;
 public interface ServiceOrder {
     Order saveOrder(Order order);
     List<Order> findAll();
+    void deleteById(Long id);
 }

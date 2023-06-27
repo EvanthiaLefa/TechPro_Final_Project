@@ -2,7 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import { Route, Routes, Link } from 'react-router-dom';
 import People from './Components/People';
-import PeopleForm from './Components/PeopleForm';
+import UpdatePeopleForm from './Components/UpdatePeopleForm';
 import CreatePeopleForm from './Components/CreatePeopleForm';
 import Item from './Components/Item';
 import CreateOrder from './Components/CreateOrder';
@@ -27,14 +27,11 @@ function App() {
             <a class="nav-link" href="#">Search Items</a>
           </li>
           </Link>
-          <li class="nav-item">
-            <a class="nav-link" href="#">See the details of your order</a>
-          </li>
         </ul>
       </div>
       <Routes>
         <Route path="/" element={<People />} />
-        <Route exact path='/form' element={<PeopleForm />} />
+        <Route exact path='/form' element={<UpdatePeopleForm />} />
         <Route exact path='/createForm' element={<CreatePeopleForm />} />
         <Route exact path="/item" element={<Item/>} />
         <Route exact path="/createOrder" element={<CreateOrder/>} />

@@ -11,7 +11,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("people")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "*")
 public class PeopleController {
 
   private final ServicePeopleImpl servicePeople;

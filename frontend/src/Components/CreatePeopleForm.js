@@ -3,8 +3,7 @@ import './PeopleForm.css';
 import { Link, useNavigate } from 'react-router-dom';
 
 const CreatePeopleForm = () => {
-  const [person, setPerson] = useState();
-  const navigate = useNavigate();
+  const [person, setPerson] = useState(); //i'm using the state to save the changes in the inputs in order to use them and create a new person
 
   const handleSubmit = () => {
     console.log(person);
@@ -15,8 +14,8 @@ const CreatePeopleForm = () => {
       email: person.email
     };
 
-    // Make a POST request using fetch
-    fetch('http://localhost:8080/people/create_people', {
+    // Make a POST request using fetch to create new person
+    fetch(`http://${window.location.hostname}:8090/people/create_people`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -24,13 +23,9 @@ const CreatePeopleForm = () => {
       body: JSON.stringify(data),
     })
     .then((responseData) => {
-      // Handle the response data if needed
-      console.log("createPeople response data", responseData);
-      // Navigate to the People component
-      navigate('/');
+      window.location.reload();
     })
     .catch((error) => {
-      // Handle the error if the request fails
       console.error(error);
     });
   };
@@ -75,9 +70,11 @@ const CreatePeopleForm = () => {
             onChange={(e) => setPerson({ ...person, email: e.target.value })}
           />
         </div>
+        <Link to={"/"}>
         <button type="button" className="btn btn-dlt btn-success" onClick={handleSubmit}>
           submit
         </button>
+        </Link>
       </div>
     </div>
   );

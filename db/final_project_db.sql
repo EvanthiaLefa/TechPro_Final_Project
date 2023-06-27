@@ -14,7 +14,7 @@ CREATE TABLE `people` (
 DROP TABLE IF EXISTS `items`;
 CREATE TABLE `items` (
   `item_id` int unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL DEFAULT '',
   PRIMARY KEY (`item_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 

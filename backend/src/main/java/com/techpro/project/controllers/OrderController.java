@@ -16,7 +16,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("order")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "*")
 public class OrderController {
 
   private final ServiceOrderImpl serviceOrder;
@@ -56,6 +56,19 @@ public class OrderController {
 
     Order createdOrder = serviceOrder.saveOrder(order);
     return ResponseEntity.ok(createdOrder);
+  }
+
+  /**
+   * This method accepts a DELETE request at "/delete_order/{id}" with the order ID as a path variable.
+   *
+   * @param id The ID of the order to be deleted.
+   * @return A ResponseEntity indicating the success of the operation.
+   */
+
+  @DeleteMapping(value = "/delete_order/{id}")
+  public ResponseEntity<?> deleteById(@PathVariable Long id) {
+    serviceOrder.deleteById(id);
+    return ResponseEntity.ok().build();
   }
 
 }
