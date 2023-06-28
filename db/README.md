@@ -1,7 +1,7 @@
 # Database Final_Project
 
 ## Description
-The database consissts from four tables.
+The database consists from four tables.
 1. people table
 2. items table
 3. order table wich contain reference to people table and used to create order per people
