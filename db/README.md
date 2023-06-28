@@ -1,6 +1,6 @@
-#Database Final_Project
+# Database Final_Project
 
-##Description
+## Description
 The database consissts from four tables.
 1. people table
 2. items table
