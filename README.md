@@ -28,6 +28,6 @@ Also instead of doing the steps 6-9 you can just run the script using the comman
 |-------------------------|:---------------------:|----------------------:|-------------------------------|
 |findAll() Avg:31ms       |findAll() Avg:30.6ms   |findAll() Avg:31.9ms   |findAll() Avg:31.2ms           |                                                                   
 |createPeople() Avg:30.2ms|createItem() Avg:30ms  |create_order() Avg:29ms|createOrderDetails() Avg:32.4ms|
-|findById() Avg:29 ms     |findById() Avg:29.6ms  |deleteById() Avg:28.2ms|-------------------------------|
-|updatePeople() Avg:28.2ms|updateItem() Avg:29ms  |-----------------------|-------------------------------|
-|deleteById() Avg:28ms    |deleteById() Avg:28.8ms|-----------------------|-------------------------------|
+|findById() Avg:29 ms     |findById() Avg:29.6ms  |deleteById() Avg:28.2ms|                               |
+|updatePeople() Avg:28.2ms|updateItem() Avg:29ms  |                       |                               |
+|deleteById() Avg:28ms    |deleteById() Avg:28.8ms|                       |                               |
