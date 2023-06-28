@@ -21,12 +21,13 @@ Also instead of doing the steps 6-9 you can just run the script using the comman
      The microservices are up and running 
  Open the fontend in browser http://ip:3000/
 
+## perfomance-of-controllers
 
 
-|People Controller        |Item Controller |Order Controller |Order_Details Controller |
-|-------------------------|:--------------:|----------------:|-------------------------|
-|findAll() Avg:31ms       |     Row 1      |   Row 1         |                         |                                                                   
-|createPeople() Avg:30.2ms|     Row 2      |   Row 2         |                         |
-|findById() Avg:29 ms     |     Row 3      |   Row 3         |                         |
-|updatePeople() Avg:28.2ms|     Row 3      |   Row 3         |                         |
-|deleteById() Avg:28ms    |     Row 3      |   Row 3         |                         |
+|People Controller        |Item Controller        |Order Controller       |Order_Details Controller     |
+|-------------------------|:---------------------:|----------------------:|-----------------------------|
+|findAll() Avg:31ms       |findAll() Avg:30.6ms   |findAll() Avg:31.9ms   |findAll() Avg:31.2ms         |                                                                   
+|createPeople() Avg:30.2ms|createItem() Avg:30ms  |create_order() Avg:29ms|createOrderDetails Avg:32.4ms|
+|findById() Avg:29 ms     |findById() Avg:29.6ms  |deleteById() Avg:28.2ms|  -------------------------  |
+|updatePeople() Avg:28.2ms|updateItem() Avg:29ms  |  ------------------   |  -------------------------  |
+|deleteById() Avg:28ms    |deleteById() Avg:28.8ms|  ------------------   |  -------------------------  |
